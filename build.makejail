@@ -1,4 +1,4 @@
 INCLUDE options/options.makejail
 INCLUDE options/volumes.makejail
 
-PKG wireguard-tools
+PKG wireguard-tools libqrencode
