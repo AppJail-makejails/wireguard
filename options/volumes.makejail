@@ -1,0 +1,1 @@
+OPTION volume=wireguard-etc mountpoint:/usr/local/etc/wireguard perm:700 owner:0 group:0
