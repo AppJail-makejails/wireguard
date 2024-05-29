@@ -1,0 +1,16 @@
+tags: 13.3
+13.3.arch: amd64
+13.3.name: "wireguard"
+13.3.timestamp.amd64: 1716991603
+13.3.sum.amd64: 19e95292cdf372d8288ba6675a02e108becb56f42249e55b18bea84ea27c2036
+13.3.size.amd64: 32369263
+13.3.source.amd64: "http://appjail.hpc.at/wireguard/13.3-amd64-image.appjail"
+13.3.source.amd64+: "https://images.all101bsd.download/wireguard/13.3-amd64-image.appjail"
+tags+: 14.0
+14.0.arch: amd64
+14.0.name: "wireguard"
+14.0.timestamp.amd64: 1716991626
+14.0.sum.amd64: b068e26ecdce5a12df767f637ae41c99bd6336d7a53c7397537530a5d9e8badf
+14.0.size.amd64: 31314347
+14.0.source.amd64: "http://appjail.hpc.at/wireguard/14.0-amd64-image.appjail"
+14.0.source.amd64+: "https://images.all101bsd.download/wireguard/14.0-amd64-image.appjail"
