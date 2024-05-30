@@ -81,7 +81,7 @@ appjail run \
 WireGuard is not intended to be a second firewall, so we must combine it with one of our choice if we want to do some more things, such as NAT.
 
 ```console
-tree -pug
+# tree -pug
 [drwxr-xr-x dtxdf    wheel   ]  .
 ├── [-rw-r--r-- dtxdf    wheel   ]  Makejail
 └── [drwxr-xr-x root     wheel   ]  files
