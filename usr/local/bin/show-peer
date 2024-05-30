@@ -1,0 +1,47 @@
+#!/bin/sh
+
+ETCDIR="/usr/local/etc/wireguard"
+PEERDIR="${ETCDIR}/peers"
+
+if [ -z "${WG_PEERID}" ]; then
+	echo "Undefined environment variable -- WG_PEERID"
+	exit 1
+fi
+
+if ! printf "%s" "${WG_PEERID}" | grep -qEe '^[0-9]+$' || [ ${WG_PEERID} -gt 253 ]; then
+	echo "Invalid peer id -- ${WG_PEERID}"
+	exit 1
+fi
+
+PEERCONF="${PEERDIR}/${WG_PEERID}/wg.conf"
+
+if [ ! -f "${PEERCONF}" ]; then
+	echo "Pair ${WG_PEERID} cannot be found or its configuration file does not exist."
+	exit 1
+fi
+
+NOTEFILE="${PEERDIR}/${WG_PEERID}/.note"
+
+echo "=========> Peer (${WG_PEERID}) <========="
+
+if [ -f "${NOTEFILE}" ]; then
+	note=`head -1 -- "${NOTEFILE}"`
+
+	echo
+	echo "  Note: ${note}"
+fi
+
+echo
+echo "  Configuration:"
+while IFS= read -r line; do
+	echo "    ${line}"
+done < "${PEERCONF}"
+
+if [ -z "${WG_HIDE_QRCODE}" ]; then
+	echo
+	echo "  QR Code:"
+	echo
+	qrencode -t ansiutf8 < "${PEERCONF}"
+fi
+
+echo

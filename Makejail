@@ -1,0 +1,39 @@
+INCLUDE options/options.makejail
+
+ARG wg_srvconf=files/server-template.conf
+ARG wg_peerconf=files/peer-template.conf
+ARG wg_tag=13.3
+
+FROM --entrypoint gh+AppJail-makejails/wireguard wireguard:${wg_tag}
+
+CMD echo "======> Installing templates ... <======"
+COPY --verbose ${wg_srvconf} /usr/local/etc/wireguard/server-template.conf
+COPY --verbose ${wg_peerconf} /usr/local/etc/wireguard/peer-template.conf
+
+CMD echo "======> Installing utilities ... <======"
+COPY --verbose usr
+
+CMD echo "======> Installing scripts ... <======"
+COPY --verbose scripts
+WORKDIR /scripts
+RUN /scripts/configure-wireguard.sh
+
+CMD echo "======> Uninstalling scripts ... <======"
+CMD rm -rf /scripts
+
+SYSRC wireguard_enable=YES
+SYSRC wireguard_interfaces=wg0
+
+SERVICE wireguard start
+
+STAGE custom:show-peer
+
+RUN show-peer
+
+STAGE custom:ls-peers
+
+RUN ls-peers
+
+STAGE custom:search-peer
+
+RUN search-peer

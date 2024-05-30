@@ -1,0 +1,9 @@
+#!/bin/sh
+
+grep -rlEe "${WG_PATTERN:-.+}" /usr/local/etc/wireguard/peers | xargs dirname | sort | uniq | while IFS= read -r peerdir; do
+	peerid=`basename -- "${peerdir}"`
+
+	export WG_PEERID="${peerid}"
+
+	show-peer
+done | less -R
