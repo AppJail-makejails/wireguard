@@ -76,6 +76,71 @@ appjail run \
 
 * `WG_PATTERN` (default: `.+`): Pattern to find matches.
 
+### Firewall / Packet Filter
+
+WireGuard is not intended to be a second firewall, so we must combine it with one of our choice if we want to do some more things, such as NAT.
+
+```console
+tree -pug
+[drwxr-xr-x dtxdf    wheel   ]  .
+├── [-rw-r--r-- dtxdf    wheel   ]  Makejail
+└── [drwxr-xr-x root     wheel   ]  files
+    └── [drwxr-xr-x root     wheel   ]  etc
+        ├── [-rw-r--r-- root     wheel   ]  pf.conf
+        └── [-rw-r--r-- root     wheel   ]  rc.conf
+
+3 directories, 3 files
+```
+
+**files/etc/pf.conf**:
+
+```
+ext_if="eb_wireguard"
+wg_clients="192.168.6.0/24"
+wg_ports="{51820}"
+
+set skip on lo0
+
+nat on $ext_if inet from $wg_clients to any -> ($ext_if)
+```
+
+**files/etc/rc.conf**:
+
+```
+gateway_enable="YES"
+pf_enable="YES"
+```
+
+**Makejail**:
+
+```
+INCLUDE gh+AppJail-makejails/wireguard
+
+OPTION virtualnet=:wireguard default
+OPTION nat
+OPTION expose=51820 proto:udp
+OPTION fstab=$PWD/.volumes/wg-etc wireguard-etc <volumefs>
+OPTION device=include \$devfsrules_hide_all
+OPTION device=include \$devfsrules_unhide_basic
+OPTION device=include \$devfsrules_unhide_login
+OPTION device=path pf unhide
+OPTION mount_devfs
+OPTION copydir=files
+OPTION file=/etc/rc.conf
+OPTION file=/etc/pf.conf
+
+SERVICE pf restart
+```
+
+```sh
+appjail makejail \
+    -j wireguard \
+    -V WG_ENDPOINT=192.168.1.112 \
+    -V WG_PERSISTENTKEEPALIVE=25 \
+        -- \
+        --wg_tag 14.0
+```
+
 ### Arguments
 
 * `wg_tag` (default: `13.3`): See [#tags](#tags).
