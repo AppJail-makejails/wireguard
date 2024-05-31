@@ -8,7 +8,7 @@ if [ -z "${WG_PEERID}" ]; then
 	exit 1
 fi
 
-if ! printf "%s" "${WG_PEERID}" | grep -qEe '^[0-9]+$' || [ ${WG_PEERID} -gt 253 ]; then
+if ! printf "%s" "${WG_PEERID}" | grep -qEe '^[0-9]+$' || [ ${WG_PEERID} -gt 254 ]; then
 	echo "Invalid peer id -- ${WG_PEERID}"
 	exit 1
 fi

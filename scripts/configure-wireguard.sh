@@ -57,7 +57,7 @@ fi
 
 if [ -z "${WG_PEERS}" ]; then
 	WG_PEERS=1
-elif ! chk_number "${WG_PEERS}" || [ ${WG_PEERS} -lt 1 -o ${WG_PEERS} -gt 253 ]; then
+elif ! chk_number "${WG_PEERS}" || [ ${WG_PEERS} -lt 1 -o ${WG_PEERS} -gt 254 ]; then
 	err "Invalid total of peers: ${WG_PEERS}"
 	exit 1
 fi

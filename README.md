@@ -155,7 +155,7 @@ appjail makejail \
 * `WG_ALLOWEDIPS` (default: `0.0.0.0/0`): See `AllowedIPs` in `wg(8)`.
 * `WG_SUBNET` (default: `192.168.6.0`): A 24-bit long network address. The last octet is ignored, but 0 is used as a convention.
 * `WG_PORT` (default: `51820`): See `ListenPort` in `wg(8)`.
-* `WG_PEERS` (default: `1`): Total number of pairs to create. A valid number is between 1 and 253. Note that 2 is the first peer ID assigned, 1 is reserved by the server.
+* `WG_PEERS` (default: `1`): Total number of pairs to create. A valid number is between 1 and 254. Note that 2 is the first peer ID assigned, 1 is reserved by the server.
 * `WG_MTU` (optional): See `MTU` in `wg-quick(8)`. Set this environment variable to `none` to leave it unspecified.
 * `WG_FORCE_UPDATE` (optional): The configuration files are not regenerated if the environment variables `WG_ENDPOINT`, `WG_DNS`, `WG_PERSISTENTKEEPALIVE`, `WG_ALLOWEDIPS`, `WG_SUBNET`, `WG_PORT`, `WG_PEERS` and `WG_MTU` are not modified, but as you can see, peer environment variables are not taken into account, so this environment variable is used to forcibly regenerate the configuration files.
 * `WG_PEER<peer-id>_ENDPOINT`: Set a different `Endpoint` than global.
