@@ -138,7 +138,7 @@ appjail makejail \
     -V WG_ENDPOINT=192.168.1.112 \
     -V WG_PERSISTENTKEEPALIVE=25 \
         -- \
-        --wg_tag 14.1
+        --wg_tag 14.2
 ```
 
 ### Arguments
@@ -171,4 +171,4 @@ appjail makejail \
 | Tag    | Arch    | Version        | Type   |
 | ------ | ------- | -------------- | ------ |
 | `13.4` | `amd64` | `13.4-RELEASE` | `thin` |
-| `14.1` | `amd64` | `14.1-RELEASE` | `thin` |
+| `14.2` | `amd64` | `14.2-RELEASE` | `thin` |
