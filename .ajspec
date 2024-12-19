@@ -1,16 +1,17 @@
 tags+: 13.4
 13.4.arch: amd64
 13.4.name: "wireguard"
-13.4.timestamp.amd64: 1734411687
-13.4.sum.amd64: 3feb7f4e2762dedd65821f4df48d1d913b3935854803f14f9ba16fdf85cc537d
-13.4.size.amd64: 33729120
+13.4.timestamp.amd64: 1734587956
+13.4.sum.amd64: fa0f3b47052b5547bb38321f256eab4dce86bad2d6f2dc356e14a93dfbf818e4
+13.4.size.amd64: 33731120
 13.4.source.amd64: "http://appjail.hpc.at/wireguard/13.4-amd64-image.appjail"
 13.4.source.amd64+: "https://images.all101bsd.download/wireguard/13.4-amd64-image.appjail"
 tags+: 14.2
 14.2.arch: amd64
 14.2.name: "wireguard"
-14.2.timestamp.amd64: 1734411716
-14.2.sum.amd64: 1b0e0231dfdca708af59903a1375520c7f2c92e87f3756e89ee990572565fe9a
-14.2.size.amd64: 33247750
+14.2.timestamp.amd64: 1734587981
+14.2.sum.amd64: b6b73d15d14850bcb4400d13eb377463b555d987fcae02565f8c9bc8e2f74b4b
+14.2.size.amd64: 33182292
 14.2.source.amd64: "http://appjail.hpc.at/wireguard/14.2-amd64-image.appjail"
 14.2.source.amd64+: "https://images.all101bsd.download/wireguard/14.2-amd64-image.appjail"
+maintenance: "This image is uploading, please wait a moment and try again. If you are importing this image using a Makejail that has the '--<name>_ajspec' argument, you can use the 'reproduce' method to use 'appjail-reproduce'. See 'appjail-image(5)' for details."
