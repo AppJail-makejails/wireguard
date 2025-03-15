@@ -3,7 +3,7 @@ INCLUDE options/options.makejail
 ARG wg_srvconf=files/server-template.conf
 ARG wg_peerconf=files/peer-template.conf
 ARG wg_ajspec=gh+AppJail-makejails/wireguard
-ARG wg_tag=13.4
+ARG wg_tag=13.5
 
 FROM --entrypoint "${wg_ajspec}" wireguard:${wg_tag}
 
