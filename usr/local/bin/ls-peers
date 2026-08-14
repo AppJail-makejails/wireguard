@@ -1,7 +1,0 @@
-#!/bin/sh
-
-for peerid in `ls -- "/usr/local/etc/wireguard/peers"`; do
-	export WG_PEERID="${peerid}"
-
-	show-peer
-done | less -R
